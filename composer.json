@@ -1,0 +1,29 @@
+{
+    "name": "fatihirday/mail-template",
+    "description": "Laravel Mail blade from DB",
+    "type": "library",
+    "version": "v0.1.0",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Fatihirday\\MailTemplate\\": "src/"
+        },
+        "files": [
+            "src/Helper.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "fatihirday",
+            "email": "fatihirday@gmail.com"
+        }
+    ],
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Fatihirday\\MailTemplate\\MailTemplateServiceProvider"
+            ]
+        }
+    }
+}
