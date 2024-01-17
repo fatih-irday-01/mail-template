@@ -1,3 +1,5 @@
+
+### Installation
 ```
 composer require fatihirday/mail-template
 ```
@@ -6,14 +8,23 @@ composer require fatihirday/mail-template
  php artisan vendor:publish --provider="Fatihirday\MailTemplate\MailTemplateServiceProvider"
 ```
 
+```
+ php artisan migrate
+```
+
 <br />
 
-#### MailTemplate
+### MailTemplate
 ![img.png](img.png)
 
+#### Mail template default variables
+* `$isRtl`
+* `$languageCode`
+* `$baseUrl` => `APP_URL` in the `.env` file
+
 <br />
 
-#### MailLanguage
+### MailLanguage
 ![img_1.png](img_1.png)
 
 
@@ -53,6 +64,9 @@ class ExampleMail extends Mailable
     public function build()
     {
         return $this->builder('default',  $this->languageCode);
+        // Or custom subject
+        // return $this->builder('default',  $this->languageCode, 'custom subject');
+        
     }
 }
 ```
@@ -67,4 +81,10 @@ $data = [
 
 return Mail::to('fatihirday@gmail.com')
     ->send(new ExampleMail('tr', $data));
+```
+
+
+### Mail Cache Clear
+```
+php artisan mail:cache:clear
 ```

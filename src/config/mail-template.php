@@ -7,8 +7,5 @@ return [
 
     'cache' => true,
 
-    'cache_vars' => [
-        'key' => '%s:%s',
-        'expires_at' => 720
-    ],
+    'cache_expires_at' => 7200,
 ];
