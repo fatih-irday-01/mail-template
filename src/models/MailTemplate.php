@@ -18,10 +18,10 @@ class MailTemplate extends Model
     /**
      * @param Builder $query
      * @param string $view
-     * @return MailTemplate|null
+     * @return void
      */
-    public function scopeGetView(Builder $query, string $view): MailTemplate|null
+    public function scopeGetView(Builder $query, string $view): void
     {
-        return $query->where('view', $view)->first();
+        $query->where('view', $view)->first();
     }
 }
