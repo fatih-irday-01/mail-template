@@ -50,7 +50,7 @@ trait MailViewTemplate
 
         $cacheKey = sprintf('mail:template:%s:%s', $view, $languageCode);
 
-        return Cache::remember(
+        return Cache::tags('mail_template')->remember(
             $cacheKey,
             config('mail-template.cache_expires_at'),
             function () use ($view, $languageCode) {
@@ -99,7 +99,7 @@ trait MailViewTemplate
 
         $cacheKey = sprintf('mail:language:%s:%s', $view, $languageCode);
 
-        return Cache::remember(
+        return Cache::tags('mail_template')->remember(
             $cacheKey,
             config('mail-template.cache_expires_at'),
             function () use ($view, $viewBody, $languageCode) {

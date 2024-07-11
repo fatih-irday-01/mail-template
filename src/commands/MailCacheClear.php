@@ -29,6 +29,6 @@ class MailCacheClear extends Command
      */
     public function handle()
     {
-        Cache::flush('mail');
+        Cache::tags('mail_template')->flush();
     }
 }
