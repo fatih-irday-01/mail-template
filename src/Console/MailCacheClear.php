@@ -1,11 +1,13 @@
 <?php
 
-namespace Fatihirday\MailTemplate\Commands;
+namespace Fatihirday\MailTemplate\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Cache;
+use Symfony\Component\Console\Attribute\AsCommand;
 
+#[AsCommand(name: 'mail:cache:clear')]
 class MailCacheClear extends Command
 {
     /**
@@ -30,5 +32,7 @@ class MailCacheClear extends Command
     public function handle()
     {
         Cache::tags('mail_template')->flush();
+
+        $this->info('mail template cache cleared');
     }
 }

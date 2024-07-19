@@ -2,7 +2,7 @@
 
 namespace Fatihirday\MailTemplate;
 
-use Fatihirday\MailTemplate\Commands\MailCacheClear;
+use Fatihirday\MailTemplate\Console\MailCacheClear;
 use Illuminate\Support\ServiceProvider;
 
 class MailTemplateServiceProvider extends ServiceProvider
@@ -15,6 +15,12 @@ class MailTemplateServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->loadMigrationsFrom(__DIR__.'/migrations');
+
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                MailCacheClear::class
+            ]);
+        }
     }
 
     /**
@@ -27,9 +33,5 @@ class MailTemplateServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/config/mail-template.php' => config_path('mail-template.php'),
         ], 'config');
-
-        $this->app->bind('mail:cache:clear', MailCacheClear::class);
-        
-        $this->commands(['mail:cache:clear']);
     }
 }
