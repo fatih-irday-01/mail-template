@@ -2,7 +2,7 @@
     "name": "fatihirday/mail-template",
     "description": "Laravel Mail blade from DB",
     "type": "library",
-    "version": "v0.3.3",
+    "version": "v0.3.4",
     "license": "MIT",
     "autoload": {
         "psr-4": {
